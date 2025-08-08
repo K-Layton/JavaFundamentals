@@ -1,6 +1,6 @@
 package com.simple.account;
 
-public class BankAccount {
+public class BankAccount implements Account {
 
     private int accountID;
     private String ownerName;
@@ -26,6 +26,14 @@ public class BankAccount {
         return "An account with id " + this.getAccountID()
                 + " with balance " + this.getBalance()
                 + " owned by " + this.getOwnerName();
+    }
+
+    public void withdraw(float amount) throws InsufficientFundsException {
+        if (amount > this.getBalance()) {
+            throw new InsufficientFundsException("Amount "
+                    + amount + " exceeds balance " + this.getBalance());
+        }
+        this.setBalance(this.getBalance() - amount);
     }
 
     public void deposit(float amount) {
