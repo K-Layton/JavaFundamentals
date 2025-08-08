@@ -1,6 +1,7 @@
 package com.simple.account;
 
 public class BankAccount {
+
     private int accountID;
     private String ownerName;
     private float balance;
@@ -10,7 +11,21 @@ public class BankAccount {
         super();
         this.accountID = accountID;
         this.ownerName = ownerName;
-      //  setBalance(balance);
+        setBalance(balance);
+    }
+
+    public void print() {
+        System.out.println("\nAn Account");
+        System.out.println("Account ID:" + this.getAccountID());
+        System.out.println(" Owner:" + this.getOwnerName());
+        System.out.println(" Balance:" + this.getBalance());
+    }
+
+    @Override
+    public String toString() {
+        return "An account with id " + this.getAccountID()
+                + " with balance " + this.getBalance()
+                + " owned by " + this.getOwnerName();
     }
 
     public void deposit(float amount) {
